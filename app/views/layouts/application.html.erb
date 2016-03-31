@@ -8,6 +8,15 @@
 </head>
 <body>
 
+<% if flash %>
+	<ul>
+	<% flash.each do |name, msg| %>
+		<li><%= msg %></li>
+	<% end %>
+	</ul>
+<% end %>
+
+
 <%= yield %>
 
 </body>
