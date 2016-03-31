@@ -14,7 +14,7 @@
 		<td><%= link_to article.title, article_path(article) %></td>
 		<td><%= article.description.truncate_words(8) %> </td>
 		<td><%= link_to 'edit', edit_article_path(article) %></td>
-		<td><%= link_to 'delete', article_path(article), method: :delete %> </td>
+		<td><%= link_to 'delete', article_path(article), method: :delete, data: { confirm: "Are you sure?" } %> </td>
 	</tr>
 	<% end %>
 
