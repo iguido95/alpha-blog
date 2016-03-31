@@ -1,0 +1,21 @@
+<h1>All Articles</h1>
+
+<p><%= link_to 'Create new article', new_article_path %></p>
+
+<table border="1">
+	<tr>
+		<th>Title</th>
+		<th>Description</th>
+		<th colspan="2">actions</th>
+	</tr>
+
+	<% @articles.each do |article| %>
+	<tr>
+		<td><%= link_to article.title, article_path(article) %></td>
+		<td><%= article.description.truncate_words(8) %> </td>
+		<td><%= link_to 'edit', edit_article_path(article) %></td>
+		<td><%= link_to 'delete', article_path(article), method: :delete %> </td>
+	</tr>
+	<% end %>
+
+</table>

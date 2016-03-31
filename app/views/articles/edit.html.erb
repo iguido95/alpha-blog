@@ -1,4 +1,4 @@
-<h1>Create a new article</h1>
+<h1>Edit article</h1>
 
 <% if @article.errors.any? %>
 	<ul>
@@ -9,14 +9,13 @@
 <% end %>
 
 <%= form_for @article do |f| %>
+
 	<%= f.label :title %><br>
 	<%= f.text_field :title %><br><br>
 
 	<%= f.label :description %><br>
-	<%= f.text_area :description %><br><br>
+	<%= f. text_area :description %><br><br>
 
 	<%= f.submit %>
 
 <% end %>
-
-<p><%= link_to "Back to articles listing", articles_path %></p>
