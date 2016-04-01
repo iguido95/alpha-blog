@@ -1,2 +1,51 @@
+$navbar-default-bg: black;
+
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+
+#logo {
+	float: left;
+	font-size: 1.7em;
+	color: white;
+	text-transform: uppercase;
+	letter-spacing: -1px;
+	font-weight: bold;
+}
+
+#logo:hover {
+	color: #fff;
+	text-decoration: none;
+}
+
+.navbar-nav > li > a, .navbar-nav > li > a:visited {
+	color: white !important;
+}
+
+.center {
+	text-align: center;
+}
+
+.jumbotron {
+	background-image: asset-url('blogger-outfits1.jpg');
+	background-size: cover;
+}
+
+.jumbotron h1 {
+	color: white;
+	text-align: center;
+	margin-bottom: 30px;
+	font-weight: lighter;
+	text-shadow: rgb(3, 3, 3) 1px 0px 8px;
+}
+
+.btn-xlarge {
+	font-size: 1.7em;
+}
+
+.btn-primary {
+	color: white;
+	border-color: white;
+	background-color: black;
+}
