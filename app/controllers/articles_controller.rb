@@ -1,4 +1,4 @@
-class ArticlesController < ApplicationController 
+class ArticlesController < ApplicationController
 
 	def index
 		@articles = Article.all.order(created_at: :desc)
@@ -8,12 +8,13 @@ class ArticlesController < ApplicationController
 		@article = Article.new
 	end
 
-	def edit 
+	def edit
 		@article = Article.find(params[:id])
 	end
 
-	def create 
+	def create
 		@article = Article.new(article_params)
+		@article.user = User.first
 		if @article.save
 			flash[:success] = "Article was successfully created"
 			redirect_to article_path(@article)
@@ -23,7 +24,7 @@ class ArticlesController < ApplicationController
 		end
 	end
 
-	def update 
+	def update
 		@article = Article.find(params[:id])
 
 		if @article.update(article_params)
@@ -45,7 +46,7 @@ class ArticlesController < ApplicationController
 		redirect_to articles_path
 	end
 
-	private 
+	private
 	def article_params
 		params.require(:article).permit(:title, :description)
 	end
