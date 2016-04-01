@@ -49,3 +49,18 @@ $navbar-default-bg: black;
 	border-color: white;
 	background-color: black;
 }
+
+.article-actions {
+	border-top: 1px solid #eaeaea;
+	padding-top: 5px;
+}
+.article-actions a {
+	float: right;
+}
+.article-actions a:nth-child(1) {
+	float: left;
+}
+
+.description {
+	margin-top: 0;
+}
