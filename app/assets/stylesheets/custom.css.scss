@@ -54,10 +54,10 @@ $navbar-default-bg: black;
 	border-top: 1px solid #eaeaea;
 	padding-top: 5px;
 }
-.article-actions a {
+#article-detail-container > .article-actions a {
 	float: right;
 }
-.article-actions a:nth-child(1) {
+#article-detail-container > .article-actions a:nth-child(1) {
 	float: left;
 }
 
@@ -66,11 +66,8 @@ $navbar-default-bg: black;
 }
 
 .article-title {
-
-font-weight: bold;
-
-font-size: 1.5em;
-
+	font-weight: bold;
+	font-size: 1.5em;
 }
 
 .article-body {
