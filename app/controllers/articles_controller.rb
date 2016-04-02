@@ -1,7 +1,8 @@
 class ArticlesController < ApplicationController
 
 	def index
-		@articles = Article.all.includes(:user).order(created_at: :desc)
+		@articles = Article.paginate(page: params[:page], per_page: 4).includes(:user).order(created_at: :desc)
+		# @articles = Article.all.includes(:user).order(created_at: :desc)
 	end
 
 	def new
