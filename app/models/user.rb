@@ -14,6 +14,6 @@ class User < ActiveRecord::Base
                     format:  { with: VALID_EMAIL_REGEX, message: "Must be an email address" }
   # validates :email_confirmation, presence: true
 
-  validates :password, confirmation: true
+  validates :password, confirmation: true, if: :new_record?
 
 end
