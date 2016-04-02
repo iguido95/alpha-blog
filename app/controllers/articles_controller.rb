@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+	before_action :set_article_by_id, only: [:edit, :update, :show, :destroy]
+	before_action :require_user, except: [:index, :show]
+	before_action :require_same_user, only: [:edit, :update, :destroy]
 
 	def index
 		@articles = Article.paginate(page: params[:page], per_page: 4).includes(:user).order(created_at: :desc)
@@ -10,12 +13,11 @@ class ArticlesController < ApplicationController
 	end
 
 	def edit
-		@article = Article.find(params[:id])
 	end
 
 	def create
 		@article = Article.new(article_params)
-		@article.user = User.first
+		@article.user = current_user
 		if @article.save
 			flash[:success] = "Article was successfully created"
 			redirect_to article_path(@article)
@@ -26,8 +28,6 @@ class ArticlesController < ApplicationController
 	end
 
 	def update
-		@article = Article.find(params[:id])
-
 		if @article.update(article_params)
 			flash[:success] = "Article was successfully updated"
 			redirect_to article_path(@article)
@@ -37,19 +37,29 @@ class ArticlesController < ApplicationController
 	end
 
 	def show
-		@article = Article.find(params[:id])
 	end
 
 	def destroy
-		@article = Article.find(params[:id])
 		@article.destroy
-		flash[:danger] = "Article #{@article.id} was successfully deleted"
+		flash[:success] = "Article #{@article.id} was successfully deleted"
 		redirect_to articles_path
 	end
 
+
 	private
+	def set_article_by_id
+		@article = Article.find(params[:id])
+	end
+
 	def article_params
 		params.require(:article).permit(:title, :description)
 	end
+
+	def require_same_user
+    unless same_user?(@article.user)
+      flash[:danger] = "You don't have the autorization to perform that action"
+      redirect_to login_path
+    end
+  end
 
 end
