@@ -29,11 +29,14 @@
 
 	<div class="article-actions">
 		<%= link_to "All Articles", articles_path, class: "btn btn-xs btn-default" %>
-		<%= link_to "Delete", articles_path(@article),
-								method: :delete,
-								data: { confirm: "Do you really want to delete this article?" },
-								class: "btn btn-xs btn-danger" %>
-		<%= link_to "Edit article", edit_article_path(@article), class: "btn btn-xs btn-primary" %>
+
+		<% if same_user?(@article.user) %>
+			<%= link_to "Delete", articles_path(@article),
+									method: :delete,
+									data: { confirm: "Do you really want to delete this article?" },
+									class: "btn btn-xs btn-danger" %>
+			<%= link_to "Edit article", edit_article_path(@article), class: "btn btn-xs btn-primary" %>
+		<% end %>
 
 
 
