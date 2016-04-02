@@ -56,7 +56,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def require_same_user
-    unless same_user?(@article.user)
+    unless same_user?(@article.user) || current_user.is_admin?
       flash[:danger] = "You don't have the autorization to perform that action"
       redirect_to login_path
     end

@@ -14,6 +14,9 @@
           <%= link_to user.username, user_path(user) %>
         </li>
         <li><small><%= pluralize(user.articles.count, "article") %> </small></li>
+        <% if logged_in? && current_user.is_admin? %>
+          <li><%= link_to "Delete user", user_path(user), method: :delete, data: { confirm: "Are you sure to delete this user?"} %></li>
+        <% end %>
       </div>
     </div>
   </ul>
