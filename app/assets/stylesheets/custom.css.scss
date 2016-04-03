@@ -86,3 +86,16 @@ $navbar-default-bg: black;
 	padding-left: 0;
 	text-align: center;
 }
+
+.badge {
+	background-color: #CEF6F5;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+.badge a:hover {
+	text-decoration: none;
+}
+
+.input_checkbox input {
+	width: auto !important;
+}
